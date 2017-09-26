@@ -3,7 +3,7 @@ package com.gu.scanamo
 import akka.stream.alpakka.dynamodb.scaladsl.DynamoClient
 import com.amazonaws.services.dynamodbv2.model.{BatchWriteItemResult, DeleteItemResult, PutItemResult}
 import com.gu.scanamo.error.DynamoReadError
-import com.gu.scanamo.ops.{ScanamoAlpakkaInterpreter, ScanamoOps}
+import com.gu.scanamo.ops.{AlpakkanamoInterpreter, ScanamoOps}
 import com.gu.scanamo.query.{Query, UniqueKey, UniqueKeys}
 import com.gu.scanamo.update.UpdateExpression
 
@@ -16,11 +16,11 @@ import scala.concurrent.{ExecutionContext, Future}
   * Note that that com.amazonaws.services.dynamodbv2.AmazonDynamoDBAsyncClient just uses an
   * java.util.concurrent.ExecutorService to make calls asynchronously
   */
-object ScanamoAlpakka {
+object Alpakkanamo {
   import cats.instances.future._
 
   def exec[A](client: DynamoClient)(op: ScanamoOps[A])(implicit ec: ExecutionContext) =
-    op.foldMap(ScanamoAlpakkaInterpreter.future(client)(ec))
+    op.foldMap(AlpakkanamoInterpreter.future(client)(ec))
 
   def put[T: DynamoFormat](client: DynamoClient)(tableName: String)(item: T)
                           (implicit ec: ExecutionContext): Future[PutItemResult] =

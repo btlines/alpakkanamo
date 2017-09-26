@@ -1,7 +1,6 @@
 package com.gu.scanamo
 
 import com.amazonaws.services.dynamodbv2.model._
-import com.gu.scanamo.query.{UniqueKey, UniqueKeys}
 import com.gu.scanamo.update.UpdateExpression
 import org.scalatest.{Matchers, WordSpec}
 

@@ -7,7 +7,7 @@ import com.amazonaws.services.dynamodbv2.model._
 
 import scala.concurrent.{ExecutionContext, Future}
 
-object ScanamoAlpakkaInterpreter {
+object AlpakkanamoInterpreter {
 
   def future(client: DynamoClient)(implicit executor: ExecutionContext): ScanamoOpsA ~> Future =
     new (ScanamoOpsA ~> Future) {
