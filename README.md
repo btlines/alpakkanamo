@@ -7,6 +7,8 @@
 
 A truly non-blocking Dynamo client (based on alpakka) for Scanamo.
 
+An alpakka-based interpreter is now directly available in [Scanamo](https://github.com/guardian/scanamo).
+
 ## Context
 
 Most of the Scala libraries for DynamoDB rely on the AWS Java client which offers limited performance (performs blocking HTTP calls):
